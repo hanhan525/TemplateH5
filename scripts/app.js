@@ -1,9 +1,7 @@
 /**
  * Created by qh on 2018/3/26.
  */
-var myApp = new Framework7();
 
-var $$ = Dom7;
 
 var  kj = angular.module('TempleteKF',['ui.router','Controllers','Directives','ngAnimate']);
 

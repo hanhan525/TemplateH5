@@ -16,7 +16,7 @@ angular.module('Controllers', [])
     }])
     /*
     * 楼书
-    *阿斯顿撒
+    *
     * */
     .controller('buildBooksViewController',['$scope','$rootScope','$http',function($scope,$rootScope,$http) {
         console.log("secondViewController");
@@ -24,23 +24,23 @@ angular.module('Controllers', [])
         $rootScope.menuArr[1].show = true;
         $rootScope.lastBtn = 1;
         $scope.init = function(){
-            var Swiper = myApp.swiper(
-                ".swiper-vertical",
-                {
-                    direction: 'vertical',
-                    pagination: ' .swiper-pagination',
-                    paginationClickable: true,
-                    resistanceRatio: 0,//禁止回弹
-                    onInit: function(swiper){ //Swiper2.x的初始化是onFirstInit
-                        swiperAnimateCache(swiper); //隐藏动画元素
-                        swiperAnimate(swiper); //初始化完成开始动画
+            // var Swiper = myApp.swiper(
+            //     ".swiper-vertical",
+            //     {
+            //         direction: 'vertical',
+            //         pagination: ' .swiper-pagination',
+            //         paginationClickable: true,
+            //         resistanceRatio: 0,//禁止回弹
+            //         onInit: function(swiper){ //Swiper2.x的初始化是onFirstInit
+            //             swiperAnimateCache(swiper); //隐藏动画元素
+            //             swiperAnimate(swiper); //初始化完成开始动画
 
-                    },
-                    onSlideChangeEnd: function(swiper){
-                        swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
+            //         },
+            //         onSlideChangeEnd: function(swiper){
+            //             swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
 
-                    }
-                });
+            //         }
+            //     });
         }
 
     }])
