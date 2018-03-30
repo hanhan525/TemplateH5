@@ -41,6 +41,28 @@ angular.module('Controllers', [])
 
             //         }
             //     });
+            var imgs =  $('.jjscroller ul li img');
+            var wapper = $(".jjwrapper")[0];
+            var lscroller = $(".jjscroller")[0];
+            wapper.style.height = $(window).height()+'px';
+            lscroller.style.height = $(window).width()*8.97+'px';
+            for(i = 0; i <imgs.length; i++){
+                imgs[i].style.width = $(window).width()+'px';
+                imgs[i].style.height = $(window).width()*8.97+'px';
+    
+            }
+            myScroll = null;
+            myScroll = new IScroll('.jjwrapper',{
+                probeType: 3,
+                scrollX: false,
+                scrollY: true,
+                bounce: false,
+                mouseWheel: true
+            });
+    
+            $scope.backView = function(){
+                window.history.go(-1);
+            }
         }
 
     }])
@@ -132,9 +154,7 @@ angular.module('Controllers', [])
         $rootScope.menuArr[$rootScope.lastBtn].show = false;
         $rootScope.menuArr[5].show = true;
         $rootScope.lastBtn = 5;
-        $scope.loadImgs = function(){
-            zc_buildAxisSlide($('.danti01'));
-        }
+     
 
         $scope.gotoHousetype =function(){$state.go('houseTypeRepleaseView');}
         /*$scope.gotoHousetype =function(){$location.path('/houseTypeView/normalpanel');}*/
