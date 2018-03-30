@@ -16,7 +16,7 @@ angular.module('Controllers', [])
     }])
     /*
     * 楼书
-    *
+    *阿斯顿撒
     * */
     .controller('buildBooksViewController',['$scope','$rootScope','$http',function($scope,$rootScope,$http) {
         console.log("secondViewController");
