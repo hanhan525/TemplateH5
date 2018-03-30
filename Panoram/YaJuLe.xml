@@ -1,0 +1,253 @@
+<krpano version="1.19" title="雅居乐">
+
+	<include url="../skin/vtourskin.xml" />
+	<include url="textbox.xml" />
+	<include url="textboxdatph.xml" />
+
+	<!-- customize skin settings: maps, gyro, thumbnails, tooltips, layout, design, ... -->
+	<skin_settings maps="false"
+				   maps_type="bing"
+				   maps_bing_api_key=""
+				   maps_zoombuttons="false"
+				   gyro="false"
+				   littleplanetintro="true"
+				   title="true"
+				   thumbs="true"
+				   thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop="0|40|240|160"
+				   thumbs_opened="false"
+				   thumbs_text="false"
+				   thumbs_dragging="true"
+				   thumbs_onhoverscrolling="false"
+				   thumbs_scrollbuttons="false"
+				   thumbs_scrollindicator="false"
+				   thumbs_loop="false"
+				   tooltips_buttons="false"
+				   tooltips_thumbs="false"
+				   tooltips_hotspots="false"
+				   tooltips_mapspots="false"
+				   deeplinking="false"
+				   loadscene_flags="MERGE"
+				   loadscene_blend="OPENBLEND(0.5, 0.0, 0.75, 0.05, linear)"
+				   loadscene_blend_prev="SLIDEBLEND(0.5, 180, 0.75, linear)"
+				   loadscene_blend_next="SLIDEBLEND(0.5,   0, 0.75, linear)"
+				   loadingtext="loading..."
+				   layout_width="100%"
+				   layout_maxwidth.normal="900"
+				   layout_maxwidth.mobile=""
+				   controlbar_width.normal="-44"
+				   controlbar_width.mobile="100%"
+				   controlbar_height.normal="38"
+				   controlbar_height.mobile="34"
+				   controlbar_offset.normal="22"
+				   controlbar_offset.mobile="0"
+				   controlbar_offset_closed="-40"
+				   controlbar_overlap.normal="7"
+				   controlbar_overlap.mobile="2"
+				   design_skin_images="vtourskin.png"
+				   design_bgcolor="0x000000"
+				   design_bgalpha="0.5"
+				   design_bgborder="0 0xFFFFFF 1.0"
+				   design_bgroundedge.normal="9"
+				   design_bgroundedge.mobile="1"
+				   design_bgshadow="0 0 9 0xFFFFFF 0.5"
+				   design_thumbborder_bgborder="4 0xFFFFFF 1.0"
+				   design_thumbborder_padding="2"
+				   design_thumbborder_bgroundedge="5"
+				   design_text_css="color:#FFFFFF; font-family:Arial; font-weight:bold;"
+				   design_text_shadow="1"
+	/>
+	<include url="../skin/vtourskin_design_glass.xml"       if="design === 'glass'"       />
+	<include url="../skin/vtourskin_design_flat.xml"        if="design === 'flat'"        />
+	<include url="../skin/vtourskin_design_flat_light.xml"  if="design === 'flat_light'"  />
+	<include url="../skin/vtourskin_design_ultra_light.xml" if="design === 'ultra_light'" />
+	<include url="../skin/vtourskin_design_117.xml"         if="design === '117'"         />
+
+	<!--
+	    For an alternative skin design either change the <skin_settings> values
+	    from above or optionally include one of the predefined designs from below.
+	    Either by removing the 'xml-if-check' from the particular <include> element
+	    or by adding e.g. initvar:{design:'flat_light'} to the embedpano() call in
+	    the html file:
+	-->
+
+	<!--下戳热点-->
+	<style name="hotspot_ani_front"
+		   url="images/spotd5.png"
+		   crop="0|0|128|128"
+		   framewidth="128" frameheight="128" frame="0" lastframe="9"  scale="0.5"
+		   onloaded="if(device.mobile, set(scale,0.5)); hotspot_animate();add_all_the_time_tooltip();" />
+	<!--三角箭头-->
+	<style name="hotspot_ani_point"
+		   url="images/bfront.png"
+		   crop="0|0|70|70"
+		   framewidth="70" frameheight="70" frame="0" lastframe="26"  scale="0.5"
+		   onloaded="if(device.mobile, set(scale,0.5)); hotspot_animate();add_all_the_time_tooltip();" />
+	<!--点扩散-->
+	<style name="hotspot_ani_hotpoint"
+		   url="images/new_spotd6_gif.png"
+		   crop="0|0|128|128"
+		   framewidth="128" frameheight="128" frame="0" lastframe="25" scale="0.5"
+		   onloaded="if(device.mobile, set(scale,0.5)); hotspot_animate();add_all_the_time_tooltip();" />
+	<!--左转-->
+	<style name="hotspot_ani_left"
+		   url="images/arr_left.png"
+		   crop="0|0|70|70"
+		   framewidth="70" frameheight="70" frame="0" lastframe="25" scale="0.5"
+		   onloaded="if(device.mobile, set(scale,0.5)); hotspot_animate();add_all_the_time_tooltip();" />
+
+	<!--右转-->
+	<style name="hotspot_ani_right"
+		   url="images/arr_right22.png"
+		   crop="0|0|70|70"
+		   framewidth="70" frameheight="70" frame="0" lastframe="25" scale="0.5"
+		   onloaded="if(device.mobile, set(scale,0.5)); hotspot_animate();add_all_the_time_tooltip();" />
+	<!--地图点-->
+	<style name="hotspot_map"
+		   url="images/sprite.png"
+		   crop="0|0|115|183"
+		   framewidth="115" frameheight="183" frame="0" lastframe="25" scale="0.13"
+		   onloaded="if(device.mobile, set(scale,0.13)); hotspot_animate();add_all_the_time_tooltip();" />
+	<!-- startup action - load the first pano/scene -->
+	<action name="startup" autorun="onstart">
+		if(startscene === null OR !scene[get(startscene)], copy(startscene,scene[0].name); );
+		loadscene(get(startscene), null, MERGE);
+		if(startactions !== null, startactions() );
+	</action>
+
+
+	<action name="hotspot_animate">
+		inc(frame,1,get(lastframe),0);
+		mul(ypos,frame,frameheight);
+		txtadd(crop,'0|',get(ypos),'|',get(framewidth),'|',get(frameheight));
+		delayedcall(0.03, if(loaded, hotspot_animate() ) );
+	</action>
+	<!--	<scene name="point_l16canting" title="餐厅" />
+        <scene name="point_l16keting" title="客厅" />
+        <scene name="point_l16shufang" title="书房" />
+        <scene name="point_l16lutai" title="露台" />-->
+	<autorotate enabled="true" waittime="2" speed="5.0" horizon="0.0"  />
+
+
+	<scene name="scene_niaokan" title="鸟瞰"   lat="" lng="" heading="" onstart="activatespot(spot_mp71_3, -80);">
+		<view hlookat="-380.857" vlookat="19.068" fovtype="MFOV" fov="80.381" maxpixelzoom="0.0" fovmin="80" fovmax="110" limitview="auto" />
+		<preview url="niaokan/preview.jpg" />
+		<image>
+			<cube url="niaokan/pano_%s.jpg" />
+			<mobile>
+				<cube url="niaokan/mobile_%s.jpg" />
+			</mobile>
+		</image>
+
+		<hotspot visible="" name="h1852" scale="0.6" edge="bottom" url="../public/panoUI/185_2.png" ath="-8.514" atv="10.645" onclick="clickRoll();"  />
+		<hotspot visible="" name="h1853" scale="0.6" edge="bottom" url="../public/panoUI/185_3.png" ath="-21.048" atv="9.041" onclick="clickRoll();" linkedscene="" />
+
+
+		<hotspot visible="" name="h1956" scale="0.6" edge="bottom" url="../public/panoUI/195_6.png" ath="-3.984" atv="12.772" onclick="clickRoll();" linkedscene="" />
+		<hotspot visible="" name="h19510" scale="0.6" edge="bottom" url="../public/panoUI/195_10.png" ath="-33.914" atv="10.557" onclick="clickRoll();" linkedscene="" />
+		<hotspot visible="" name="h2154" scale="0.6" edge="bottom" url="../public/panoUI/215_4.png" ath="-28.591" atv="9.740" onclick="clickRoll();" linkedscene="" />
+		<hotspot visible="" name="h2155" scale="0.6" edge="bottom" url="../public/panoUI/215_5.png" ath="-13.850" atv="12.000" onclick="clickRoll();" linkedscene="" />
+		<hotspot visible="" name="h2156" scale="0.6" edge="bottom" url="../public/panoUI/215_7.png" ath="-9.686" atv="19.853" onclick="clickRoll();" linkedscene="" />
+		<hotspot visible="" name="h2157" scale="0.6" edge="bottom" url="../public/panoUI/215_7.png" ath="-0.309" atv="17.029" onclick="clickRoll();" linkedscene="" />
+		<hotspot visible="" name="h2158" scale="0.6" edge="bottom" url="../public/panoUI/215_255_8.png" ath="-17.092" atv="14.594" onclick="clickRoll();" linkedscene="" />
+		<hotspot visible="" name="h2159" scale="0.6" edge="bottom" url="../public/panoUI/215_255_9.png" ath="-24.085" atv="12.820" onclick="clickRoll();" linkedscene="" />
+
+		<hotspot visible="" name="h18511" scale="0.6" edge="bottom" url="../public/panoUI/185_11.png" ath="-39.245" atv="12.291" onclick="clickRoll();" linkedscene="" />
+		<hotspot visible="" name="h18512" scale="0.6" edge="bottom" url="../public/panoUI/185_12.png" ath="-27.168" atv="15.884" onclick="clickRoll();" linkedscene="" />
+		<hotspot visible="" name="h18515" scale="0.6" edge="bottom" url="../public/panoUI/185_15.png" ath="-33.777" atv="20.674" onclick="clickRoll();" linkedscene="" />
+		<hotspot visible="" name="h18514" scale="0.6" edge="bottom" url="../public/panoUI/185_14.png" ath="-16.033" atv="27.647" onclick="clickRoll();" linkedscene="" />
+		<hotspot visible="" name="h18516" scale="0.6" edge="bottom" url="../public/panoUI/185_16.png" ath="-48.615" atv="22.850" onclick="clickRoll();" linkedscene="" />
+		<hotspot visible="" name="h18517" scale="0.6" edge="bottom" url="../public/panoUI/185_17.png" ath="-32.287" atv="39.270" onclick="clickRoll();" linkedscene="" />
+	</scene>
+
+	<scene name="scene_kecanting" title="客餐厅"   lat="" lng="" heading="" onstart="activatespot(spot_mp71_3, -80);">
+		<view hlookat="-723.932" vlookat="12.079" fovtype="MFOV" fov="119.932" maxpixelzoom="2.0" fovmin="30" fovmax="120" limitview="auto" />
+		<preview url="kecanting/preview.jpg" />
+		<image>
+			<cube url="kecanting/pano_%s.jpg" />
+			<mobile>
+				<cube url="kecanting/mobile_%s.jpg" />
+			</mobile>
+		</image>
+		<hotspot name="host1" style="hotspot_ani_point" ath="-126.832" atv="4.937" onclick="loadscene(scene_woshi,null,MERGE,BLEND(1));" linkedscene="scene_woshi" />
+	</scene>
+
+	<scene name="scene_woshi" title="卧室"   lat="" lng="" heading="" onstart="activatespot(spot_mp71_3, -80);">
+		<view hlookat="-380.857" vlookat="19.068" fovtype="MFOV" fov="114.381" maxpixelzoom="2.0" fovmin="30" fovmax="120" limitview="auto" />
+		<preview url="woshi/preview.jpg" />
+		<image>
+			<cube url="woshi/pano_%s.jpg" />
+			<mobile>
+				<cube url="woshi/mobile_%s.jpg" />
+			</mobile>
+		</image>
+	</scene>
+
+	<scene name="scene_yangtai" title="阳台"   lat="" lng="" heading="" onstart="activatespot(spot_mp71_3, -80);">
+		<view hlookat="-380.857" vlookat="19.068" fovtype="MFOV" fov="80.381" maxpixelzoom="0.0" fovmin="80" fovmax="110" limitview="auto" />
+		<preview url="yangtai/preview.jpg" />
+		<image>
+			<cube url="yangtai/pano_%s.jpg" />
+			<mobile>
+				<cube url="yangtai/mobile_%s.jpg" />
+			</mobile>
+		</image>
+	</scene>
+
+	<scene name="scene_yuanjing" title="院景"   lat="" lng="" heading="" onstart="activatespot(spot_mp71_3, -80);">
+		<view hlookat="-380.857" vlookat="19.068" fovtype="MFOV" fov="80.381" maxpixelzoom="0.0" fovmin="80" fovmax="110" limitview="auto" />
+		<preview url="yuanjing/preview.jpg" />
+		<image>
+			<cube url="yuanjing/pano_%s.jpg" />
+			<mobile>
+				<cube url="yuanjing/mobile_%s.jpg" />
+			</mobile>
+		</image>
+	</scene>
+
+	<scene name="scene_beixiaozhen" title="北小镇"   lat="" lng="" heading="" onstart="activatespot(spot_mp71_3, -80);">
+		<view hlookat="-380.857" vlookat="19.068" fovtype="MFOV" fov="80.381" maxpixelzoom="0.0" fovmin="80" fovmax="110" limitview="auto" />
+		<preview url="beixiaozhen/preview.jpg" />
+		<image>
+			<cube url="beixiaozhen/pano_%s.jpg" />
+			<mobile>
+				<cube url="beixiaozhen/mobile_%s.jpg" />
+			</mobile>
+		</image>
+	</scene>
+
+	<action name="clickRoll">
+
+		jscall('clickRoll()')
+	</action>
+
+
+	<scene name="point_l17zhuwei" title="主卫" />
+
+
+
+	<action name="add_all_the_time_tooltip">
+		txtadd(tooltipname, 'tooltip_', get(name));
+		addplugin(get(tooltipname));
+		txtadd(plugin[get(tooltipname)].parent, 'hotspot[', get(name), ']');
+		set(plugin[get(tooltipname)].url,'%SWFPATH%/plugins/textfield.swf');
+		set(plugin[get(tooltipname)].align,top);
+		set(plugin[get(tooltipname)].edge,bottom);
+		set(plugin[get(tooltipname)].x,0);
+		set(plugin[get(tooltipname)].y,0);
+		set(plugin[get(tooltipname)].120,50);
+		set(plugin[get(tooltipname)].autoheight,true);
+		set(plugin[get(tooltipname)].background,true);
+		set(plugin[get(tooltipname)].backgroundcolor,0x000000);
+		set(plugin[get(tooltipname)].roundedge,3);
+		set(plugin[get(tooltipname)].backgroundalpha,0.5);
+		set(plugin[get(tooltipname)].border,true);
+		set(plugin[get(tooltipname)].glow,4);
+		set(plugin[get(tooltipname)].glowcolor,0xFFFFFF);
+		set(plugin[get(tooltipname)].css,'text-align:center; color:#FFFFFF; font-family:Arial; font-weight:bold; font-size:12px;');
+		set(plugin[get(tooltipname)].textshadow,1);
+		set(plugin[get(tooltipname)].textshadowrange,6.0);
+		set(plugin[get(tooltipname)].textshadowangle,90);
+		copy(plugin[get(tooltipname)].html,scene[get(linkedscene)].title);
+		set(plugin[get(tooltipname)].enabled,false);
+	</action>
+</krpano>

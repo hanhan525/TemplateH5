@@ -1,0 +1,128 @@
+.huxing-view{
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  top: 0px;
+  z-index:5000;
+  .hx-select{
+    position: absolute;
+    display: inline-flex;
+    width: 130px;
+    height: 30px;
+    right: 50px;
+    top: 50px;
+    z-index: 2;
+    border: 1px solid #A5A5A5;
+    border-radius: 4px;
+    li{
+      line-height: 30px;
+      text-align: center;
+      flex: 1;
+    }
+    .normalpanel{
+      border-right: 1px solid grey;
+    }
+    .threeDpanel{
+    }
+    .hover{
+      background-color: #f0a020;
+    }
+  }
+}
+.select-floor{
+  position: absolute;
+  z-index: 1;
+  right: 2px;
+  top: 35%;
+  li{
+    width: 73px;
+    height: 35px;
+    margin-top: 19px;
+    background-color: #82BDBF;
+    line-height: 35px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 6px 5px 2px #BFCBCC;
+  }
+}
+.houseType_3d{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #ff4836;
+}
+.houseType_panel{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: url("../public/buttons/hx_bg.jpg") no-repeat center;
+  background-size: 100% 100%;
+  span{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    background: url(http://localhost:63342/www/KFWeb/TemplateH5/public/buttons/spot_blue.png) no-repeat;
+    background-size: 50px 1250px;
+    animation: spotsSpread 1s steps(24) infinite;
+    line-height: 50px;
+    transform: scale(0.8);
+  }
+  .yuanjing{
+    left: 25%;
+    top: 50%;
+  }
+  .kecanting{
+    left: 36%;
+    top: 38%;
+  }
+  .woshi{
+    left: 48%;
+    top: 27%;
+  }
+  .yangtai{
+    left: 58%;
+    top: 44%;
+  }
+}
+
+
+@keyframes spotsSpread  {
+  0%{
+
+  }
+  100%{
+    background-position: left -1200px;
+  }
+}
+// @-khtml-keyframes  spotsSpread{
+//   0%{
+
+//   }
+//   100%{
+//     background-position: left -1200px;
+//   }
+// }
+@-moz-keyframes  spotsSpread{
+  0%{
+
+  }
+  100%{
+    background-position: left -1200px;
+  }
+}
+@-ms-keyframes spotsSpread {
+  0%{
+
+  }
+  100%{
+    background-position: left -1200px;
+  }
+}
+@-webkit-keyframes spotsSpread {
+  0%{
+
+  }
+  100%{
+    background-position: left -1200px;
+  }
+}

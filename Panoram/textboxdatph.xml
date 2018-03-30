@@ -1,0 +1,82 @@
+﻿<krpano>
+
+
+   <!-- 
+pic_ratio 文字在横屏时所占的窗口比例，填写百分比，百分比小于15%时，则全屏显示图片，大于85%，则全屏显示文字。
+pic_ratio_portrait 与上类似，设置的是竖屏时的占比。
+pic_align 设置文字在左在右，可选的数值为lefttop和righttop
+pic_resize_min 设置图片的最小缩放比例，默认值为1，不能设置大于1或者小于0的数值。数值大于0或小于等于1
+pic_resize_max 设置图片的最大缩放比例，默认值为1，不能设置小于1的数值。数值大于或等于1。
+linecolor 中间分隔线颜色，十六进制
+linealpha 中间分隔线透明度
+separation_line_visible 是否在横屏时显示关闭按钮与其它按钮之间的竖向分隔线 其颜色和透明度与中间分隔线保持一致
+bgcolor 背景颜色，十六进制
+bgalpha 背景透明度
+bgborder  背景边框设置
+bgroundedge 背景圆角设置
+bgshadow  背景阴影设置 
+bgwidth 背景宽度比例，百分比
+bgheight 背景高度比例，百分比         
+closebutton_color 关闭按钮是否在正常状态时呈现颜色 
+next_and_prev_button  是否显示左右两个箭头按钮，显示的话则提供多个热点图文切换的相册功能 常驻相册为 open_textbox(0,name); 默认为false，不用修改
+next_and_prev_button_color 左右按钮是否在正常状态时呈现颜色，默认是白色，鼠标悬停时出现颜色
+title_normal 标题字体设置
+title_mobile 标题字体手机端设置 
+text_normal 文本字体设置
+text_mobile 文本字体手机端设置
+zoomtocursor 图片缩放时是否在鼠标位置
+autoplaysound 是否进入图文时自动播放音频
+button  可设置音频按钮和链接按钮的位置 music|link 或 link|music
+linkbutton 可设置链接按钮的样式 包括 1 2 3 三个数值可选 也可以通过修改psd文件选择自己的样式
+ 
+-->
+
+
+	<textbox_settings pic_ratio="36%"
+	              pic_ratio_portrait="35%"
+	              pic_align="lefttop"
+	              pic_resize_min="1"
+	              pic_resize_max="1"
+
+	              linecolor="0xFFFFFF" 
+	              bgcolor="0x000000" 
+	              bgalpha="0.8"
+	              bgborder="0 0xFFFFFF 0"
+	              bgroundedge="0"
+	              bgshadow="0 0 0.5 0xFFFFFF 0"   
+	              bgwidth="100%"
+	              bgheight="100%"   
+
+	/>
+<action name="useraction">    
+    jscall('ShowMusic();');
+</action>
+<!-- 设置用户点击关闭按钮后的自定义动作
+
+   -->
+
+<!-- intropic的name对应的是scene的name。]
+               id默认为空，请不要删除。
+               count是该场景里共有几个要展示的热点图文，如有四个则为4。
+
+     box的name要从box_0开始，而且必须是box_开头，下划线后的数字就是图文的序号，box_0的数字0与open_textbox(0)中的数字0对应。也就是说只能按照这个规律命名。
+     当name为 skintextbox 时，为常驻图文
+     title是标题。
+     text的取值要与下面data的name对应上。
+     imgurl为图片路径，可选择体积较大的图片，
+     simgurl为手机端图片的路径，可选择较小体积的图片地址 
+     sound为音频文件路径
+     link为对应的链接，只支持http链接
+
+   -->
+
+  
+ 
+ <intropic name="skintextbox1" id="" count="1">
+ <box name="box_0" title="" imgurl="da_1.jpg" simgurl="da_1.jpg"  /> 
+ </intropic>
+ 
+ <intropic name="skintextbox2" id="" count="1"> 
+ <box name="box_0" title="" imgurl="da_2.jpg" simgurl="da_2.jpg" />  
+ </intropic>
+</krpano>

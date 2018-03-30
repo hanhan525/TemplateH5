@@ -1,0 +1,145 @@
+.singlebuild-roll {
+  position: absolute;
+  width: 100%;
+  bottom: 50px;
+  top: 0px;
+  z-index: 5000;
+}
+.zc_content {
+  background: none;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+.zc_content > ul {
+  width: 150px;
+  position: absolute;
+  right: 32px;
+  bottom: 225px;
+}
+.zc_content > ul li {
+  background: url("../public/buttons/gohx.png") no-repeat center;
+  width: 165px;
+  height: 37px;
+  background-size: 93%;
+}
+/*最小宽度1024  ipad*/
+@media screen and (min-height: 668px) {
+  .zc_content > ul {
+    bottom: 218px;
+  }
+}
+.zc_content.show {
+  display: block;
+}
+.zc_content.hide {
+  display: none;
+}
+.zc_content > img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+.zc_axisslide {
+  /* background: #000; */
+  position: absolute;
+  width: 100%;
+  /* height: 100%; */
+  top: 0;
+  left: 0;
+  margin: auto;
+  overflow: hidden;
+}
+.zc_axisslide.show {
+  display: block;
+}
+.zc_axisslide.hide {
+  display: none;
+}
+.zc_centerH {
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+.zc_centerV {
+  top: 0;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.zc_axisslide ol {
+  display: none;
+  list-style-type: none;
+}
+.zc_axisslide img {
+  position: absolute;
+  width: 100%;
+  top: 21%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  box-sizing: border-box;
+  border-top: 5px solid #BFA692;
+  border-bottom: 5px solid #BFA692;
+}
+/*最小宽度1024  ipad*/
+@media screen and (min-width: 1024px) {
+  .zc_axisslide img {
+    position: absolute;
+    width: 100%;
+    top: 3%;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+}
+.zc_axisslide img.show {
+  visibility: visible;
+  width: 100%;
+}
+.zc_axisslide img.hide {
+  visibility: hidden;
+  width: 0;
+}
+.zc_axisslide em.loading {
+  width: 55px;
+  padding: 40px 0 0 0;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -27px 0 0 -27px;
+  background: url(../public/rollloading.gif) no-repeat 10px 0;
+  z-index: 999999;
+  text-align: center;
+  font-size: 12px;
+  color: #219edf;
+  font-family: Arial;
+  font-style: normal;
+}
+.zc_axisslide .loading {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 90px;
+  height: 90px;
+  margin-left: -45px;
+  margin-top: -50px;
+  display: none;
+}
+.zc_axisslide .loading span {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  color: #333;
+  font-size: 12px;
+  font-family: Arial, Verdana, sans;
+  text-align: center;
+  line-height: 1em;
+  margin-top: -0.5em;
+}

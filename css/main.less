@@ -1,0 +1,250 @@
+@import 'singleBuildRoll';
+@import 'huxing';
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+    list-style: none;
+  }
+  body,html{
+    overflow: hidden;
+    background-color: black;
+    font-family: monospace;
+    height: 100%;
+    width: 100%;
+  }
+  .loading{
+    position: fixed;
+    width: 20px;
+    top: 46vh;
+    left: 50vw;
+    margin-left: -10px;
+    z-index:9999;
+  }
+  .footer{
+    width: 100%;
+    position: fixed;
+    bottom: -75px;
+    display: inline-flex;
+    transition: all .7s;
+    background-color: rgba(50,50,50,.4);
+    z-index:8998;
+    li{
+      height: 70px;
+      flex: 1;
+      padding-top: 5px;
+      span{
+        display: block;
+        height: 10px;
+        line-height: 10px;
+        margin: 0 auto;
+        text-align: center;
+        color: white;
+        font-size: 12px;
+        transform: scale(1.2);
+        margin-top: 13px;
+      }
+      i{
+        background: url(../public/buttons/menu.png) no-repeat;
+        background-size: 864px 126px;
+        width: 32px;
+        height: 32px;
+        display: block;
+        margin: 0 auto;
+        transform: scale(2);
+        margin-top: 5px;
+      }
+      .quanjingnaokan{
+        background-position: 0px -52px;
+      }
+      .quanjingnaokanhover{
+        background-position: 0px -20px !important;
+      }
+      .dianziloushu{
+        background-position: -448px -52px;
+      }
+      .dianziloushuhover{
+        background-position: -448px -20px !important;
+      }
+      .huxingjianshang{
+        background-position: -384px -52px;
+      }
+      .huxingjianshanghover{
+        background-position: -384px -20px !important;
+      }
+      .yangbanjian{
+        background-position: -256px -52px;
+      }
+      .yangbanjianhover{
+        background-position: -256px -20px !important;
+      }
+      .manyou{
+        background-position: -160px -52px;
+      }
+      .manyouhover{
+        background-position: -160px -20px !important;
+      }
+      .dantijianshang{
+        background-position: -576px -52px;
+      }
+      .dantijianshanghover{
+        background-position: -576px -20px !important;
+      }
+      .fuzhu{
+        background-position: -544px -52px;
+      }
+      .fuzhuhover{
+        background-position: -544px -20px !important;
+      }
+    }
+  }
+  .advser-header {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: -50px;
+    overflow: hidden;
+    transition: all .7s;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    box-sizing: border-box;
+    z-index:4000;
+    .header-user{
+      display: flex;
+      justify-content: space-between;
+      .header-avater{
+        width: 32px;
+        height: 32px;
+        background-color: #fff;
+        border: 1px solid #eee;
+        border-radius: 50%;
+        position: relative;
+        background-size: cover;
+        .header-certification{
+          position: absolute;
+          bottom: 0;
+          right: -5px;
+          width: 10px;
+          height: 10px;
+          background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAYAAAA7bUf6AAACK0lEQVQ4jaVUv09TURT+7n333fZRhNAS0sGQQohDQzo1sMDGIIhTF3Fr4kDs5OCC4R/gR5wwDCbdRCYTo8a/QELSOkDo4IAOhjQN2Kh9P3jvvnscsM+84o8Ev/F83/nuOeeee4EeEFGawmBFe+1DrTybiEgrz9Ze+5DCYIWI0r05LGYQ+hUQrQetmuE1qlI196HdM3ArA5GdRjJf9s2RYgjGHjJDbl0y0f73JyC69+3tXdP/+Kr3sAhybBEDN58FYOwpl9fuRyYU+hVS3uP286IZtj/80aALY+gGhu7UAiaSD5ghtxgRpRH6n7++Lll/q+BSRbkFDC6+cGHI6xxaLQetmtE1ENkpJCZKv01MTJQgslMAAP/TGwStmgGtljkFnSWvUZVdoVWoYGBhFyIzGTMQmUkMLOzCKlSimNeoSgo6SxzCGlfN/Yhw328CjCM1sxYzSc2sAYxf8D+hmvuAsMY5MxJ92j37RZwewDuqQubmIUfnLvofnYPMzcM7qkKdHkRa7Z6BGYk+TuG5w61M7FR7bxWkHKRmNwEukJrdBCkH9t5qTMetDCg8dziUeyyy0zFS2ydw6xsQwwUM3n4JMVyAW9+Atk/ic8pOA8o95szs30nmy37vTTj1dWinCZmbh3aacOrrvRIk82Wfmf07HFxsmyPFUI4txgQUdKLy7XePQEEnxsuxWzBHiiG42P7nxhrpPMIvjXisd2OjOfzv24lauOIrvoSr/Cc/AMpmN1x44YOhAAAAAElFTkSuQmCC);
+          background-size: cover;
+        }
+      }
+      .header-userinfo{
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        div{
+          display: flex;
+          margin-left: 11px;
+          align-items: center;
+        }
+        div>span{
+          transform: scale(0.8);
+          transform-origin: left center;
+          letter-spacing: 1px;
+          text-indent: 1px;
+          margin-left: 0px;
+          color: white;
+        }
+      }
+      .header-userinfo>span{
+        font-size: 14px;
+        line-height: 16px;
+        width: 35vw;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color: white;
+        padding-left: 10px;
+      }
+
+    }
+    .header-connection{
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-around;
+      overflow: hidden;
+      height: 34px;
+      list-style: none;
+      hr{
+        width: 1px;
+        height: 50px;
+        background-color: #fff;
+        display: block;
+        margin: 0 5px;
+        transform: scale(0.3);
+        transform-origin: center;
+
+      }
+      li{
+        width: 32px;
+        height: 32px;
+        transform: scale(1.4);
+        transform-origin: center;
+
+      }
+      .icon1{
+        background: url(../public/buttons/headmenu.png);
+        background-size: 256px;
+        background-position: 0 160px;
+      }
+      .icon2{
+        background: url(../public/buttons/headmenu.png);
+        background-size: 256px;
+        background-position: -32px 160px;
+      }
+      .icon3{
+        background: url(../public/buttons/headmenu.png);
+        background-size: 256px;
+        background-position: -64px 160px;
+      }
+    }
+  }
+
+/*
+*楼书页面
+*/
+.slider-container{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.swiper-container {
+  height: 100%;
+}
+.swiper-slide {
+  background: #fff;
+}
+.swiper-slide span {
+  text-align:center;
+  display:block;
+  margin: 20px;
+  font-size:21px;
+}
+
+/*辅助工具页面*/
+.helpTools{
+  position: absolute;
+  width: 17%;
+  z-index: 5000;
+  right: 0;
+  bottom: 54px;
+  li{
+    height: 40px;
+    background-color: rgba(8, 6, 6, 0.5);
+    color: rgb(255, 255, 255);
+    font-size: 12px;
+    line-height: 40px;
+    text-align: center;
+    border-bottom: 1px solid white;
+    box-sizing: border-box;
+  }
+  .navigation-project{
+
+  }
+  .call-project{
+
+  }
+}

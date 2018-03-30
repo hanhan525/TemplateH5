@@ -1,0 +1,7 @@
+<div class="huxing-view">
+    <ul class="hx-select">
+        <li class="normalpanel" ng-class="{hover:normalSelect}" ng-click="normalSelect=true;changeselect(0)">平面</li>
+        <li class="threeDpanel" ng-class="{hover:!normalSelect}" ng-click="normalSelect=false;changeselect(1)">3D</li>
+    </ul>
+    <div  ui-view></div>
+</div>
